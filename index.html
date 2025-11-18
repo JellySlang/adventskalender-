@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Adventskalender für dich 🎄</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --bg: #06121f;
+      --card: #253552;
+      --accent: #f5d36b;
+      --text-light: #ffffff;
+      --text-dark: #222222;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #20324f 0, #06121f 55%, #02060b 100%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-light);
+      padding: 20px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 8px;
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 700px) {
+      .calendar {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .calendar {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .door {
+      position: relative;
+      padding-top: 100%; /* Quadrat */
+      perspective: 800px;
+      cursor: pointer;
+    }
+
+    .door-inner {
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--card), #172235);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      transition: transform 0.4s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+      transform-style: preserve-3d;
+    }
+
+    .door:hover .door-inner {
+      box-shadow: 0 10px 24px rgba(0,0,0,0.6);
+      transform: translateY(-3px);
+    }
+
+    .door.locked {
+      cursor: not-allowed;
+    }
+
+    .door.locked .door-inner {
+      opacity: 0.6;
+    }
+
+    .door.locked .door-inner::after {
+      content: "🔒";
+      font-size: 1.4rem;
+      margin-left: 0.3rem;
+    }
+
+    .door.open .door-inner {
+      transform: rotateY(180deg);
+      opacity: 0;
+    }
+
+    .content {
+      position: absolute;
+      inset: 0;
+      background: #ffffff;
+      color: var(--text-dark);
+      border-radius: 12px;
+      padding: 10px;
+      font-size: 0.9rem;
+      overflow: auto;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.55);
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+    }
+
+    .door.open .content {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .content h2 {
+      margin-top: 0;
+      font-size: 1rem;
+    }
+
+    .content p {
+      margin: 0.3rem 0;
+    }
+
+    .content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0.4rem auto;
+      border-radius: 8px;
+    }
+
+    .hint {
+      text-align: center;
+      font-size: 0.8rem;
+      margin-top: 10px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <h1>Dein kleiner Adventskalender 🎅</h1>
+  <div class="subtitle">
+    Jeden Tag ein Türchen – nur für dich.
+  </div>
+
+  <div class="calendar" id="calendar"></div>
+  <div class="hint">
+    Tipp: Bereits geöffnete Türchen kannst du wieder anklicken und nochmal lesen.
+  </div>
+</div>
+
+<script>
+  // HIER trägst du deine Inhalte ein
+  const doors = [
+    {
+      day: 1,
+      title: "1. Dezember",
+      html: `
+        <p>🎄 Frohen 1. Dezember!<br>
+        Ich bin froh, dass du in meinem Leben bist. 💛</p>
+        <p>Dein Meme des Tages:</p>
+        <img src="images/meme1.jpg" alt="Meme 1">
+      `
+    },
+    {
+      day: 2,
+      title: "2. Dezember",
+      html: `
+        <p>Heute nur ein kleiner Gedanke:</p>
+        <p><strong>„Mit dir ist selbst Montag ok.”</strong></p>
+        <img src="images/meme2.png" alt="Meme 2">
+      `
+    },
+    {
+      day: 3,
+      title: "3. Dezember",
+      html: `
+        <p>Wenn ich ein Weihnachtsgeschenk wäre, wärst du das Geschenkpapier.</p>
+        <p>Weil du alles schöner machst. ✨</p>
+      `
+    },
+    // … weitere Tage bis 24 / 25 ergänzen
+  ];
+
+  // Wenn du zum Testen alle Türchen freischalten willst, setze das auf true:
+  const DEBUG_UNLOCK_ALL = false;
+
+  const today = new Date();
+  const currentDay = today.getDate(); // vereinfachte Logik
+
+  const calendarEl = document.getElementById("calendar");
+
+  // Falls du weniger als 24 Einträge hast, kannst du hier automatisch leere Türen auffüllen.
+  const totalDoors = 24;
+  const definedDays = doors.map(d => d.day);
+  for (let d = 1; d <= totalDoors; d++) {
+    if (!definedDays.includes(d)) {
+      doors.push({
+        day: d,
+        title: `${d}. Dezember`,
+        html: `<p>Hier könntest du noch etwas Schönes für den ${d}. Dezember eintragen. 🎁</p>`
+      });
+    }
+  }
+
+  // Nach Tag sortieren
+  doors.sort((a, b) => a.day - b.day);
+
+  doors.forEach(doorData => {
+    const door = document.createElement("div");
+    door.className = "door";
+    door.dataset.day = doorData.day;
+
+    const doorInner = document.createElement("div");
+    doorInner.className = "door-inner";
+    doorInner.textContent = doorData.day;
+
+    const content = document.createElement("div");
+    content.className = "content";
+    content.innerHTML = `
+      <h2>${doorData.title}</h2>
+      ${doorData.html}
+    `;
+
+    // einfache "Tür erst ab Tag X" Logik
+    const isUnlocked = DEBUG_UNLOCK_ALL || currentDay >= doorData.day;
+    if (!isUnlocked) {
+      door.classList.add("locked");
+    }
+
+    door.addEventListener("click", () => {
+      if (door.classList.contains("locked")) {
+        alert("Dieses Türchen darf erst am " + doorData.day + ". Dezember geöffnet werden 🎁");
+        return;
+      }
+      // andere offene Türchen schließen
+      document.querySelectorAll(".door.open").forEach(d => {
+        if (d !== door) d.classList.remove("open");
+      });
+      door.classList.toggle("open");
+    });
+
+    door.appendChild(doorInner);
+    door.appendChild(content);
+    calendarEl.appendChild(door);
+  });
+</script>
+</body>
+</html>
