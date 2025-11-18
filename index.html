@@ -216,6 +216,29 @@
       height: 100%;
       border: 0;
     }
+
+/* --- Popup Bild Animation --- */
+.popup-image {
+  width: 100%;
+  max-width: 480px;
+  display: block;
+  margin: 10px auto;
+  border-radius: 12px;
+
+  animation: popIn 0.35s ease-out forwards;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+  
   </style>
 </head>
 <body>
