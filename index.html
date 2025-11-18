@@ -249,25 +249,26 @@
 <script>
   // HIER trägst du deine Inhalte ein
   const doors = [
-    {
-  day: 1,
-  title: "1. Dezember",
-  html: `
-    <p>🎄 Frohen 1. Dezember!<br>
-    Ich bin froh, dass du in meinem Leben bist. 💛</p>
-    <p>Klick einfach auf das Türchen – dann öffnet sich ein kleines Geschenk für dich.</p>
-  `,
-  modalHtml: `
-    <p>Dein Meme des Tages:</p>
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/LcpcMxmLtCQ?si=Qmh75cBX7eNCmNq2"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-  `
-},
+    
+       {
+      day: 1,
+      title: "1. Dezember",
+      html: `
+        <p>🎄 Frohen 1. Dezember!<br>
+        Ich bin froh, dass du in meinem Leben bist. 💛</p>
+        <p>Klick einfach auf das Türchen – dann öffnet sich ein kleines Geschenk für dich.</p>
+      `,
+      modalHtml: `
+        <p>Dein Meme des Tages:</p>
+        <div class="video-wrapper">
+          <iframe 
+            src="https://www.youtube.com/embed/LcpcMxmLtCQ?si=Qmh75cBX7eNCmNq2"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      `
+    },
 
     {
       day: 2,
@@ -355,22 +356,54 @@ modal.addEventListener("click", (e) => {
       door.classList.add("locked");
     }
 
-    door.addEventListener("click", () => {
-      if (door.classList.contains("locked")) {
-        alert("Dieses Türchen darf erst am " + doorData.day + ". Dezember geöffnet werden 🎁");
-        return;
-      }
-      // andere offene Türchen schließen
-      document.querySelectorAll(".door.open").forEach(d => {
-        if (d !== door) d.classList.remove("open");
-      });
-      door.classList.toggle("open");
+   doors.forEach(doorData => {
+  const door = document.createElement("div");
+  door.className = "door";
+  door.dataset.day = doorData.day;
+
+  const doorInner = document.createElement("div");
+  doorInner.className = "door-inner";
+  doorInner.textContent = doorData.day;
+
+  const content = document.createElement("div");
+  content.className = "content";
+  content.innerHTML = `
+    <h2>${doorData.title}</h2>
+    ${doorData.html}
+  `;
+
+  // einfache "Tür erst ab Tag X" Logik
+  const isUnlocked = DEBUG_UNLOCK_ALL || currentDay >= doorData.day;
+  if (!isUnlocked) {
+    door.classList.add("locked");
+  }
+
+  door.addEventListener("click", () => {
+    if (door.classList.contains("locked")) {
+      alert("Dieses Türchen darf erst am " + doorData.day + ". Dezember geöffnet werden 🎁");
+      return;
+    }
+
+    const wasOpen = door.classList.contains("open");
+
+    // andere offene Türchen schließen
+    document.querySelectorAll(".door.open").forEach(d => {
+      if (d !== door) d.classList.remove("open");
     });
 
-    door.appendChild(doorInner);
-    door.appendChild(content);
-    calendarEl.appendChild(door);
+    door.classList.toggle("open");
+
+    // Popup nur beim Öffnen und nur, wenn modalHtml existiert
+    if (!wasOpen && doorData.modalHtml) {
+      openModal(doorData.title, doorData.modalHtml);
+    }
   });
+
+  door.appendChild(doorInner);
+  door.appendChild(content);
+  calendarEl.appendChild(door);
+});
+
 </script>
 </body>
 </html>
