@@ -236,66 +236,65 @@
         transform: scale(1);
         opacity: 1;
       }
+    }
 
-/* Wrapper für Nikolaus-Bild */
-.santa-wrapper {
-  position: relative;
-  display: inline-block;
-}
+    /* Wrapper für Nikolaus-Bild */
+    .santa-wrapper {
+      position: relative;
+      display: inline-block;
+    }
 
-/* Bild selbst bekommt ein kleines „Pop-in“ */
-.santa-image {
-  animation: santa-pop 1.2s ease-out;
-}
+    /* Bild selbst bekommt ein kleines „Pop-in“ */
+    .santa-image {
+      animation: santa-pop 1.2s ease-out;
+    }
 
-/* Glitzer-Rahmen um das Bild */
-.sparkle-frame::before,
-.sparkle-frame::after {
-  content: "";
-  position: absolute;
-  inset: -10px;
-  border-radius: 18px;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  opacity: 0;
-  background:
-    radial-gradient(circle, rgba(255,255,255,0.95) 0, transparent 60%) 0 0 / 8px 8px repeat,
-    radial-gradient(circle, rgba(255,215,0,0.9) 0, transparent 60%) 4px 4px / 10px 10px repeat;
-  animation: sparkle 2.8s infinite ease-in-out;
-}
+    /* Glitzer-Rahmen um das Bild */
+    .sparkle-frame::before,
+    .sparkle-frame::after {
+      content: "";
+      position: absolute;
+      inset: -10px;
+      border-radius: 18px;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0;
+      background:
+        radial-gradient(circle, rgba(255,255,255,0.95) 0, transparent 60%) 0 0 / 8px 8px repeat,
+        radial-gradient(circle, rgba(255,215,0,0.9) 0, transparent 60%) 4px 4px / 10px 10px repeat;
+      animation: sparkle 2.8s infinite ease-in-out;
+    }
 
-/* leichte Pop-in-Animation für das Bild */
-@keyframes santa-pop {
-  0% {
-    transform: scale(0.8);
-    filter: drop-shadow(0 0 0 rgba(255,255,255,0));
-  }
-  60% {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 18px rgba(255,255,255,0.9));
-  }
-  100% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
-  }
-}
+    /* leichte Pop-in-Animation für das Bild */
+    @keyframes santa-pop {
+      0% {
+        transform: scale(0.8);
+        filter: drop-shadow(0 0 0 rgba(255,255,255,0));
+      }
+      60% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 18px rgba(255,255,255,0.9));
+      }
+      100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
+      }
+    }
 
-/* Glitzer-„Puls“ vom Rahmen */
-@keyframes sparkle {
-  0%, 100% {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  30% {
-    opacity: 0.7;
-    transform: scale(1.02);
-  }
-  65% {
-    opacity: 0.3;
-    transform: scale(1.0);
-  }
-}
-      
+    /* Glitzer-„Puls“ vom Rahmen */
+    @keyframes sparkle {
+      0%, 100% {
+        opacity: 0;
+        transform: scale(0.98);
+      }
+      30% {
+        opacity: 0.7;
+        transform: scale(1.02);
+      }
+      65% {
+        opacity: 0.3;
+        transform: scale(1.0);
+      }
     }
   </style>
 </head>
@@ -341,26 +340,24 @@
           </div>
         `
       },
-      
-     {
-  day: 2,
-  title: "2. Dezember",
-  html: `
-    <p>❄️ Schönen 2. Dezember!<br>
-    Zeit für ein Video 🎬</p>
-  `,
-  modalHtml: `
-    <p>Dein Video des Tages:</p>
-    <div class="video-wrapper">
-      <iframe
-        src="https://www.youtube.com/embed/Jo6fKboqfMs?si=Rt7LbZujzmDxvUnM"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-  `
-},
-
+      {
+        day: 2,
+        title: "2. Dezember",
+        html: `
+          <p>❄️ Schönen 2. Dezember!<br>
+          Zeit für ein Video 🎬</p>
+        `,
+        modalHtml: `
+          <p>Dein Video des Tages:</p>
+          <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/Jo6fKboqfMs?si=Rt7LbZujzmDxvUnM"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+        `
+      },
       {
         day: 3,
         title: "3. Dezember",
@@ -379,24 +376,22 @@
           <h3 style="margin-top:0;">Deine Duplos warten auf dich 🍫</h3>
           <img src="images/duplo.png" alt="Duplo Geschenk" class="popup-image" />
         `
-      }
-
+      },
       {
-  day: 6,
-  title: "6. Dezember – Nikolaus",
-  html: `
-    <p>🎅 Frohen Nikolaus!<br>
-    Heute wartet eine kleine Überraschung auf dich.</p>
-  `,
-  modalHtml: `
-    <h3 style="margin-top:0;">Dein Nikolaus-Geschenk 🎅</h3>
-    <div class="santa-wrapper sparkle-frame">
-      <img src="images/nikolaus.png" class="popup-image santa-image" alt="Nikolaus-Überraschung" />
-    </div>
-    <p style="text-align:center;">Danke, dass du dieses Jahr so tapfer warst 💫</p>
-  `
-},
-     
+        day: 6,
+        title: "6. Dezember – Nikolaus",
+        html: `
+          <p>🎅 Frohen Nikolaus!<br>
+          Heute wartet eine kleine Überraschung auf dich.</p>
+        `,
+        modalHtml: `
+          <h3 style="margin-top:0;">Dein Nikolaus-Geschenk 🎅</h3>
+          <div class="santa-wrapper sparkle-frame">
+            <img src="images/nikolaus.png" class="popup-image santa-image" alt="Nikolaus-Überraschung" />
+          </div>
+          <p style="text-align:center;">Danke, dass du dieses Jahr so tapfer warst 💫</p>
+        `
+      }
       // weitere Tage kannst du später ergänzen
     ];
 
