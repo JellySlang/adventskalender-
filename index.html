@@ -217,28 +217,26 @@
       border: 0;
     }
 
-/* --- Popup Bild Animation --- */
-.popup-image {
-  width: 100%;
-  max-width: 480px;
-  display: block;
-  margin: 10px auto;
-  border-radius: 12px;
+    /* --- Popup Bild Animation --- */
+    .popup-image {
+      width: 100%;
+      max-width: 480px;
+      display: block;
+      margin: 10px auto;
+      border-radius: 12px;
+      animation: popIn 0.35s ease-out forwards;
+    }
 
-  animation: popIn 0.35s ease-out forwards;
-}
-
-@keyframes popIn {
-  0% {
-    transform: scale(0.85);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-  
+    @keyframes popIn {
+      0% {
+        transform: scale(0.85);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
@@ -270,7 +268,7 @@
         title: "1. Dezember",
         html: `
           <p>🎄 Frohen 1. Dezember!<br>
-        Du bist toll ❤️</p>
+          Du bist toll ❤️</p>
         `,
         modalHtml: `
           <p>Dein Meme des Tages:</p>
@@ -284,17 +282,13 @@
         `
       },
       {
-  day: 2,
-  title: "2. Dezember",
-  html: `
-    <p>heute gibt es etwas Leckeres für dich. 😋</p>
-  `,
-  modalHtml: `
-    <h3 style="margin-top:0;">Deine Duplos warten auf dich 🍫</h3>
-    <img src="images/duplo.png" alt="Duplo Geschenk" class="popup-image" />
-  `
-},
-
+        day: 2,
+        title: "2. Dezember",
+        html: `
+          <p>Heute nur ein kleiner Reminder:<br>
+          Du machst meinen Dezember besser. ✨</p>
+        `
+      },
       {
         day: 3,
         title: "3. Dezember",
@@ -302,12 +296,23 @@
           <p>Wenn ich ein Weihnachtsgeschenk wäre, wärst du das Geschenkpapier.</p>
           <p>Weil du alles schöner machst. ✨</p>
         `
+      },
+      {
+        day: 5,
+        title: "5. Dezember",
+        html: `
+          <p>Heute gibt es etwas Leckeres für dich. 😋</p>
+        `,
+        modalHtml: `
+          <h3 style="margin-top:0;">Deine Duplos warten auf dich 🍫</h3>
+          <img src="images/duplo.png" alt="Duplo Geschenk" class="popup-image" />
+        `
       }
       // weitere Tage kannst du später ergänzen
     ];
 
-    // Zum Testen alle Türchen freischalten? -> true setzen
-    const DEBUG_UNLOCK_ALL = false;
+    // Zum Testen alle Türchen freischalten: nach dem Test wieder auf false setzen!
+    const DEBUG_UNLOCK_ALL = true;
 
     const today = new Date();
     const currentDay = today.getDate();
