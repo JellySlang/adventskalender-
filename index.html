@@ -190,6 +190,36 @@
       overflow: auto;
     }
 
+/* Tabs im Modal */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: #eee;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tab-btn.active {
+  background: #d7e6ff;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+    
     .modal-close {
       position: absolute;
       top: 8px;
@@ -419,6 +449,54 @@
           </p>
         `
       },
+
+      {
+        day: 4,
+        title: "4. Dezember",
+        html: `
+          <p>Heute gibt es ein Stück Internet-Geschichte 🍼✨<br>
+          Das legendäre Dancing Baby!</p>
+        `,
+        modalHtml: `
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="video">🎬 Video</button>
+            <button class="tab-btn" data-tab="info">ℹ️ Hintergrund</button>
+          </div>
+
+          <div class="tab-content active" id="video">
+            <h3>Dancing Baby (1996)</h3>
+            <div class="video-wrapper">
+              <iframe 
+                src="https://www.youtube.com/embed/LlG9yYW6Bi8?si=rcKIwlUNRmupO-4x"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <div class="tab-content" id="info">
+            <h3>Hintergrundinfos zum Dancing Baby 🍼🕺</h3>
+            <p><strong>Das Dancing Baby</strong>, auch „Baby Cha-Cha“ oder „Oogachacka Baby“, 
+            ist eine 3D-Animation eines tanzenden Babys aus dem Jahr 1996. 
+            Ursprünglich war es nur eine Demo-Datei für die 3D-Animationssoftware 
+            <em>Character Studio</em> (ein Plug-in für 3D Studio Max) und sollte zeigen, 
+            wie sich Bewegungsdaten auf ein Modell übertragen lassen.</p>
+
+            <p>Über E-Mails und frühe Websites verbreitete sich die Animation als eines der 
+            ersten Internet-Memes überhaupt. Berühmt wurde sie vor allem, als sie in der 
+            TV-Serie <em>Ally McBeal</em> auftauchte – dort als tanzende Vision eines Babys 
+            zu „Hooked on a Feeling“ von Blue Swede.</p>
+
+            <p>Mehr dazu im Original-Artikel:<br>
+              <a href="https://en.wikipedia.org/wiki/Dancing_baby" target="_blank">
+                https://en.wikipedia.org/wiki/Dancing_baby
+              </a>
+            </p>
+          </div>
+        `
+      },
+
+      
       {
         day: 5,
         title: "5. Dezember",
@@ -474,6 +552,24 @@
       if (e.target === modal) closeModal();
     });
 
+// Tabs im Modal (Video / Info umschalten)
+document.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("tab-btn")) return;
+
+  const tab = e.target.dataset.tab;
+
+  // Buttons umschalten
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.tab === tab);
+  });
+
+  // Inhalte umschalten
+  document.querySelectorAll(".tab-content").forEach(content => {
+    content.classList.toggle("active", content.id === tab);
+  });
+});
+
+    
     const calendarEl = document.getElementById("calendar");
 
     // Fehlende Tage bis 24 automatisch auffüllen
