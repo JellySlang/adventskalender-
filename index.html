@@ -190,36 +190,35 @@
       overflow: auto;
     }
 
-/* Tabs im Modal */
-.tabs {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
-}
+    /* Tabs im Modal */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
 
-.tab-btn {
-  flex: 1;
-  padding: 8px;
-  border: none;
-  border-radius: 8px;
-  background: #eee;
-  cursor: pointer;
-  font-weight: 600;
-}
+    .tab-btn {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      border-radius: 8px;
+      background: #eee;
+      cursor: pointer;
+      font-weight: 600;
+    }
 
-.tab-btn.active {
-  background: #d7e6ff;
-}
+    .tab-btn.active {
+      background: #d7e6ff;
+    }
 
-.tab-content {
-  display: none;
-}
+    .tab-content {
+      display: none;
+    }
 
-.tab-content.active {
-  display: block;
-}
+    .tab-content.active {
+      display: block;
+    }
 
-    
     .modal-close {
       position: absolute;
       top: 8px;
@@ -272,8 +271,8 @@
     .santa-wrapper {
       position: relative;
       display: block;
-      max-width: 480px;       
-      margin: 0 auto;  
+      max-width: 480px;
+      margin: 0 auto;
     }
 
     /* Bild selbst bekommt ein kleines „Pop-in“ */
@@ -301,8 +300,8 @@
     .snow-wrapper {
       position: relative;
       display: block;
-      max-width: 480px;       
-      margin: 0 auto; 
+      max-width: 480px;
+      margin: 0 auto;
     }
 
     /* „virtuelle“ Schneeschicht oben drüber */
@@ -449,7 +448,6 @@
           </p>
         `
       },
-
       {
         day: 4,
         title: "4. Dezember",
@@ -495,8 +493,6 @@
           </div>
         `
       },
-
-      
       {
         day: 5,
         title: "5. Dezember",
@@ -522,28 +518,26 @@
           </div>
           <p style="text-align:center;">❤️</p>
         `
+      },
+      {
+        day: 7,
+        title: "7. Dezember",
+        html: `
+          <p>Eine kleine Nascherei für dich 🍬<br>
+          Heute gibt es Toffifee!</p>
+        `,
+        modalHtml: `
+          <h3 style="margin-top:0;">Toffifee für dich 🍫</h3>
+          <div class="snow-wrapper">
+            <img src="images/toffifee.jpg"
+                alt="Toffifee"
+                class="popup-image" />
+          </div>
+          <p style="text-align:center; margin-top:0.5rem;">
+            ❤️💗❤️
+          </p>
+        `
       }
-
-{
-  day: 7,
-  title: "7. Dezember",
-  html: `
-    <p>Eine kleine Nascherei für dich 🍬<br>
-    Heute gibt es Toffifee!</p>
-  `,
-  modalHtml: `
-    <h3 style="margin-top:0;">Toffifee für dich 🍫</h3>
-    <div class="snow-wrapper">
-      <img src="images/toffifee.jpg"
-           alt="Toffifee"
-           class="popup-image" />
-    </div>
-    <p style="text-align:center; margin-top:0.5rem;">
-    ❤️🩷❤️�
-    </p>
-  `
-},
-   
       // weitere Tage kannst du später ergänzen
     ];
 
@@ -573,24 +567,23 @@
       if (e.target === modal) closeModal();
     });
 
-// Tabs im Modal (Video / Info umschalten)
-document.addEventListener("click", (e) => {
-  if (!e.target.classList.contains("tab-btn")) return;
+    // Tabs im Modal (Video / Info umschalten)
+    document.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("tab-btn")) return;
 
-  const tab = e.target.dataset.tab;
+      const tab = e.target.dataset.tab;
 
-  // Buttons umschalten
-  document.querySelectorAll(".tab-btn").forEach(btn => {
-    btn.classList.toggle("active", btn.dataset.tab === tab);
-  });
+      // Buttons umschalten
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.tab === tab);
+      });
 
-  // Inhalte umschalten
-  document.querySelectorAll(".tab-content").forEach(content => {
-    content.classList.toggle("active", content.id === tab);
-  });
-});
+      // Inhalte umschalten
+      document.querySelectorAll(".tab-content").forEach(content => {
+        content.classList.toggle("active", content.id === tab);
+      });
+    });
 
-    
     const calendarEl = document.getElementById("calendar");
 
     // Fehlende Tage bis 24 automatisch auffüllen
