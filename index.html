@@ -366,15 +366,16 @@
         opacity: 0.3;
         transform: scale(1.0);
       }
+    }
 
-      /* Größere PDF-Anzeige im Modal */
-.pdf-viewer {
-  width: 100%;
-  max-width: 900px;   /* größer als vorher */
-  height: 85vh;       /* viel mehr Höhe nutzbar */
-  border: none;
-  display: block;
-  margin: 0 auto;
+    /* Größere PDF-Anzeige im Modal */
+    .pdf-viewer {
+      width: 100%;
+      max-width: 900px;
+      height: 85vh;
+      border: none;
+      display: block;
+      margin: 0 auto;
     }
   </style>
 </head>
@@ -407,7 +408,7 @@
         title: "1. Dezember",
         html: `
           <p>🎄 Frohen 1. Dezember!<br>
-         Ich wünsche dir eine zauberhafte Adventszeit und viel Spaß mit dem Kalender. Ich hab dich lieb ❤️</p>
+          Ich wünsche dir eine zauberhafte Adventszeit und viel Spaß mit dem Kalender. Ich hab dich lieb ❤️</p>
         `,
         modalHtml: `
           <p>Dein Meme des Tages:</p>
@@ -466,11 +467,11 @@
         `,
         modalHtml: `
           <div class="tabs">
-            <button class="tab-btn active" data-tab="video">🎬 Video</button>
-            <button class="tab-btn" data-tab="info">ℹ️ Hintergrund</button>
+            <button class="tab-btn active" data-tab="video4">🎬 Video</button>
+            <button class="tab-btn" data-tab="info4">ℹ️ Hintergrund</button>
           </div>
 
-          <div class="tab-content active" id="video">
+          <div class="tab-content active" id="video4">
             <h3>Dancing Baby (1996)</h3>
             <div class="video-wrapper">
               <iframe 
@@ -481,7 +482,7 @@
             </div>
           </div>
 
-          <div class="tab-content" id="info">
+          <div class="tab-content" id="info4">
             <h3>Hintergrundinfos zum Dancing Baby 🍼🕺</h3>
             <p><strong>Das Dancing Baby</strong>, auch „Baby Cha-Cha“ oder „Oogachacka Baby“, 
             ist eine 3D-Animation eines tanzenden Babys aus dem Jahr 1996. 
@@ -596,212 +597,197 @@
           </div>
         `
       },
-    
       {
-  day: 9,
-  title: "9. Dezember",
-  html: `
-    <p>Weihnachts-Meme-Zeit 🎅🤣<br>
-    Heute gibt es ein ganz weihnachtliches Video.</p>
-  `,
-  modalHtml: `
-    <h3>Dein Weihnachts-Meme des Tages 🎄😂</h3>
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/IsO0HOD3kjM?si=5GuQ6_V5Wpx3aitJ"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-  `
-},
+        day: 9,
+        title: "9. Dezember",
+        html: `
+          <p>Weihnachts-Meme-Zeit 🎅🤣<br>
+          Heute gibt es ein ganz weihnachtliches Video.</p>
+        `,
+        modalHtml: `
+          <h3>Dein Weihnachts-Meme des Tages 🎄😂</h3>
+          <div class="video-wrapper">
+            <iframe 
+              src="https://www.youtube.com/embed/IsO0HOD3kjM?si=5GuQ6_V5Wpx3aitJ"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+        `
+      },
+      {
+        day: 10,
+        title: "10. Dezember",
+        html: `
+          <p>Ein Meilenstein der Internetgeschichte 🌐✨<br>
+          Heute öffnet sich das allererste Dokument des World Wide Web.</p>
+        `,
+        modalHtml: `
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="web10">🌐 Webseite</button>
+            <button class="tab-btn" data-tab="history10">ℹ️ Geschichte</button>
+          </div>
 
-{
-  day: 10,
-  title: "10. Dezember",
-  html: `
-    <p>Ein Meilenstein der Internetgeschichte 🌐✨<br>
-    Heute öffnet sich das allererste Dokument des World Wide Web.</p>
-  `,
-  modalHtml: `
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="web10">🌐 Webseite</button>
-      <button class="tab-btn" data-tab="history10">ℹ️ Geschichte</button>
-    </div>
+          <div class="tab-content active" id="web10">
+            <h3>Die erste Website der Welt (1991)</h3>
+            <p>So sah das World Wide Web am Anfang aus.</p>
+            <div class="video-wrapper" style="padding-bottom:70%;">
+              <iframe
+                src="https://info.cern.ch/hypertext/WWW/TheProject.html"
+                style="border:0; width:100%; height:100%;">
+              </iframe>
+            </div>
+          </div>
 
-    <!-- TAB 1: Die erste Website -->
-    <div class="tab-content active" id="web10">
-      <h3>Die erste Website der Welt (1991)</h3>
-      <p>So sah das World Wide Web am Anfang aus.</p>
-      <div class="video-wrapper" style="padding-bottom:70%;">
-        <iframe
-          src="https://info.cern.ch/hypertext/WWW/TheProject.html"
-          style="border:0; width:100%; height:100%;"
-        ></iframe>
-      </div>
-    </div>
+          <div class="tab-content" id="history10">
+            <h3>Wie das Web entstand – kurz erklärt</h3>
+            <p>Am CERN entwickelte Tim Berners-Lee 1989 die Grundlagen, die wir heute
+            als <strong>World Wide Web</strong> kennen: HTML, HTTP und den ersten Webbrowser.</p>
 
-    <!-- TAB 2: Hintergrund -->
-    <div class="tab-content" id="history10">
-      <h3>Wie das Web entstand – kurz erklärt</h3>
-      <p>Am CERN entwickelte Tim Berners-Lee 1989 die Grundlagen, die wir heute
-      als <strong>World Wide Web</strong> kennen: HTML, HTTP und den ersten Webbrowser.</p>
+            <p>Die erste Website diente dazu, das Projekt zu erklären:
+            wie Hyperlinks funktionieren, wie man Webseiten erstellt und wie
+            Informationen im Netz verknüpft werden können.</p>
 
-      <p>Die erste Website diente dazu, das Projekt zu erklären:
-      wie Hyperlinks funktionieren, wie man Webseiten erstellt und wie
-      Informationen im Netz verknüpft werden können.</p>
+            <p>Der Kern der Idee:  
+            <em>Informationen für alle Menschen frei zugänglich machen.</em></p>
 
-      <p>Der Kern der Idee:  
-      <em>Informationen für alle Menschen frei zugänglich machen.</em></p>
+            <p>Mehr dazu im Handelsblatt-Artikel:<br>
+              <a href="https://www.handelsblatt.com/arts_und_style/lifestyle/netzgeschichte-sieben-meilensteine-des-austauschs-ueber-das-internet/25826596.html" target="_blank">
+                Zur Hintergrundgeschichte
+              </a>
+            </p>
 
-      <p>Mehr dazu im Handelsblatt-Artikel:<br>
-        <a href="https://www.handelsblatt.com/arts_und_style/lifestyle/netzgeschichte-sieben-meilensteine-des-austauschs-ueber-das-internet/25826596.html" target="_blank">
-          Zur Hintergrundgeschichte
-        </a>
-      </p>
+            <p>Weitere „erste Male“ des Internets:<br>
+              <a href="https://www.buzzfeed.de/buzz/19-legendaere-erste-male-die-das-internet-zu-dem-gemacht-haben-was-es-heute-ist-90142966.html" 
+                 target="_blank">
+                Buzzfeed-Artikel ansehen
+              </a>
+            </p>
+          </div>
+        `
+      },
+      {
+        day: 11,
+        title: "11. Dezember",
+        html: `
+          <p>Ein Stück Hacker-Geschichte 💻🧨<br>
+          Heute geht es um den ersten Computerwurm, der das Internet erschütterte.</p>
+        `,
+        modalHtml: `
+          <h3 style="margin-top:0;">Der Morris-Wurm (1988)</h3>
 
-      <p>Weitere „erste Male“ des Internets:<br>
-        <a href="https://www.buzzfeed.de/buzz/19-legendaere-erste-male-die-das-internet-zu-dem-gemacht-haben-was-es-heute-ist-90142966.html" 
-           target="_blank">Buzzfeed-Artikel ansehen</a>
-      </p>
-    </div>
-  `
-},  
+          <p><strong>Video zum Morris Worm:</strong></p>
+          <div class="video-wrapper">
+            <iframe 
+              src="https://www.youtube.com/embed/G2i_6j55bS0?si=PVFXMeGXMnQLdOtj"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
 
-      
-{
-  day: 11,
-  title: "11. Dezember",
-  html: `
-    <p>Ein Stück Hacker-Geschichte 💻🧨<br>
-    Heute geht es um den ersten Computerwurm, der das Internet erschütterte.</p>
-  `,
-  modalHtml: `
-    <h3 style="margin-top:0;">Der Morris-Wurm (1988)</h3>
+          <h3 style="margin-top:1.2rem;">Hintergrundinfos 🧠</h3>
+          <p>
+            Der <strong>Morris-Wurm</strong> gilt als der erste sich selbst 
+            verbreitende Computerwurm, der das damals noch junge Internet 
+            massiv lahmlegte. Er wurde 1988 von 
+            <em>Robert Tappan Morris</em>, einem Informatikstudenten, 
+            veröffentlicht — angeblich, um Sicherheitslücken sichtbar zu machen.
+          </p>
 
-    <p><strong>Video zum Morris Worm:</strong></p>
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/G2i_6j55bS0?si=PVFXMeGXMnQLdOtj"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
+          <p>
+            Durch einen Fehler in der Programmierung vervielfachte sich der Wurm jedoch
+            viel zu schnell und legte große Teile des Internets lahm.
+            Viele Universitätsrechner und Regierungscomputer fielen aus.
+          </p>
 
-    <h3 style="margin-top:1.2rem;">Hintergrundinfos 🧠</h3>
-    <p>
-      Der <strong>Morris-Wurm</strong> gilt als der erste sich selbst 
-      verbreitende Computerwurm, der das damals noch junge Internet 
-      massiv lahmlegte. Er wurde 1988 von 
-      <em>Robert Tappan Morris</em>, einem Informatikstudenten, 
-      veröffentlicht — angeblich, um Sicherheitslücken sichtbar zu machen.
-    </p>
+          <p>
+            Der Vorfall führte später zur Gründung des <strong>Computer Emergency Response Team (CERT)</strong>
+            und gilt als einer der wichtigsten Meilensteine der IT-Sicherheitsgeschichte.
+          </p>
 
-    <p>
-      Durch einen Fehler in der Programmierung vervielfachte sich der Wurm jedoch
-      viel zu schnell und legte große Teile des Internets lahm.
-      Viele Universitätsrechner und Regierungscomputer fielen aus.
-    </p>
+          <p>Mehr dazu im Wikipedia-Artikel:<br>
+            <a href="https://de.wikipedia.org/wiki/Morris_(Computerwurm)" target="_blank">
+              https://de.wikipedia.org/wiki/Morris_(Computerwurm)
+            </a>
+          </p>
+        `
+      },
+      {
+        day: 12,
+        title: "12. Dezember",
+        html: `
+          <p>Ein Internet-Juwel ✨🤣<br>
+          Heute wartet ein katziges Meme-Video auf dich!</p>
+        `,
+        modalHtml: `
+          <h3 style="margin-top:0;">Dein Meme des Tages 🎬</h3>
+          <div class="video-wrapper">
+            <iframe 
+              src="https://www.youtube.com/embed/XRWwBdvdpRA?si=pbZjJg8m_APoOIYG"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+        `
+      },
+      {
+        day: 13,
+        title: "13. Dezember",
+        html: `
+          <p>Heute wird's etwas abgefahren 🍄😇<br>
+          Eine alternative Theorie: War Jesus ein Pilz?</p>
+        `,
+        modalHtml: `
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="bild13">🖼️ Bild</button>
+            <button class="tab-btn" data-tab="theorie13">🍄 Theorie</button>
+            <button class="tab-btn" data-tab="pdf13">📄 PDF</button>
+          </div>
 
-    <p>
-      Der Vorfall führte später zur Gründung des <strong>Computer Emergency Response Team (CERT)</strong>
-      und gilt als einer der wichtigsten Meilensteine der IT-Sicherheitsgeschichte.
-    </p>
+          <div class="tab-content active" id="bild13">
+            <h3>Jesus mit Pilzhut 😇🍄</h3>
+            <img src="images/jesus-pilz.png"
+                 alt="Jesus mit Pilzhut"
+                 class="popup-image" />
+            <p style="text-align:center; margin-top:0.5rem;">
+              Perfekt, um an Weihnachten mal kurz an der Realität zu knabbern.
+            </p>
+          </div>
 
-    <p>Mehr dazu im Wikipedia-Artikel:<br>
-      <a href="https://de.wikipedia.org/wiki/Morris_(Computerwurm)" target="_blank">
-        https://de.wikipedia.org/wiki/Morris_(Computerwurm)
-      </a>
-    </p>
-  `
-},     
+          <div class="tab-content" id="theorie13">
+            <h3>Die „Jesus war ein Pilz“-Theorie 🍄</h3>
+            <p>
+              In den 1970ern stellte der Sprachwissenschaftler John Allegro eine sehr
+              wilde These auf: Die Geschichten über Jesus seien eigentlich verschlüsselte
+              Berichte über den Gebrauch psychoaktiver Pilze – vor allem des Fliegenpilzes.
+            </p>
+            <p>
+              Historiker:innen und Theolog:innen sind sich einig, dass Allegros Schlüsse
+              stark spekulativ sind. Trotzdem erlebt die Theorie immer wieder ein Revival –
+              denn sie verbindet Religion, Rausch und Popkultur auf ziemlich absurde Weise.
+            </p>
+            <p>
+              Mehr dazu im Artikel:<br>
+              <a href="https://www.wholecelium.com/de/blog/was-jesus-a-magic-mushroom-the-trippy-1970s-theory-thats-back-in-vogue/"
+                 target="_blank">
+                wholecelium.com – War Jesus ein Magic Mushroom?
+              </a>
+            </p>
+          </div>
 
-      
-{
-  day: 12,
-  title: "12. Dezember",
-  html: `
-    <p>Ein Internet-Juwel ✨🤣<br>
-    Heute wartet ein katziges Meme-Video auf dich!</p>
-  `,
-  modalHtml: `
-    <h3 style="margin-top:0;">Dein Meme des Tages 🎬</h3>
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/XRWwBdvdpRA?si=pbZjJg8m_APoOIYG"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-  `
-},
-
-     
-     
-{
-  day: 13,
-  title: "13. Dezember",
-  html: `
-    <p>Heute wird's etwas abgefahren 🍄😇<br>
-    Eine alternative Theorie: War Jesus ein Pilz?</p>
-  `,
- modalHtml: `
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="bild13">🖼️ Bild</button>
-    <button class="tab-btn" data-tab="theorie13">🍄 Theorie</button>
-    <button class="tab-btn" data-tab="pdf13">📄 PDF</button>
-  </div>
-
-  <div class="tab-content active" id="bild13">
-    <h3>Jesus mit Pilzhut 😇🍄</h3>
-    <img src="images/jesus-pilz.png"
-         alt="Jesus mit Pilzhut"
-         class="popup-image" />
-    <p style="text-align:center; margin-top:0.5rem;">
-      Perfekt, um an Weihnachten mal kurz an der Realität zu knabbern.
-    </p>
-  </div>
-`
-
-    <div class="tab-content" id="theorie13">
-      <h3>Die „Jesus war ein Pilz“-Theorie 🍄</h3>
-      <p>
-        In den 1970ern stellte der Sprachwissenschaftler John Allegro eine sehr
-        wilde These auf: Die Geschichten über Jesus seien eigentlich verschlüsselte
-        Berichte über den Gebrauch psychoaktiver Pilze – vor allem des Fliegenpilzes.
-      </p>
-      <p>
-        Historiker:innen und Theolog:innen sind sich einig, dass Allegros Schlüsse
-        stark spekulativ sind. Trotzdem erlebt die Theorie immer wieder ein Revival –
-        denn sie verbindet Religion, Rausch und Popkultur auf ziemlich absurde Weise.
-      </p>
-      <p>
-        Mehr dazu im Artikel:<br>
-        <a href="https://www.wholecelium.com/de/blog/was-jesus-a-magic-mushroom-the-trippy-1970s-theory-thats-back-in-vogue/"
-           target="_blank">
-          wholecelium.com – War Jesus ein Magic Mushroom?
-        </a>
-      </p>
-    </div>
-
-    <div class="tab-content" id="pdf13">
-      <h3>Wissenschaftliche Buchbesprechung 📄</h3>
-      <p>
-        Diese PDF bespricht Allegros Buch ausführlich und setzt sich
-        kritisch mit seiner Pilz-Theorie auseinander.
-      </p>
-      <iframe 
-        src="jesus-pilz-theorie.pdf#toolbar=1&view=fitH"
-        style="width:100%;height:60vh;border:none;border-radius:12px;">
-      </iframe>
-    </div>
-  `
-},
-
-    
-
-
-      
+          <div class="tab-content" id="pdf13">
+            <h3>Wissenschaftliche Buchbesprechung 📄</h3>
+            <p>
+              Diese PDF bespricht Allegros Buch ausführlich und setzt sich
+              kritisch mit seiner Pilz-Theorie auseinander.
+            </p>
+            <iframe 
+              src="jesus-pilz-theorie.pdf#toolbar=1&view=fitH"
+              class="pdf-viewer">
+            </iframe>
+          </div>
+        `
+      }
       // weitere Tage kannst du später ergänzen
     ];
 
@@ -831,7 +817,7 @@
       if (e.target === modal) closeModal();
     });
 
-    // Tabs im Modal (Video / Info umschalten)
+    // Tabs im Modal (Video / Info / etc. umschalten)
     document.addEventListener("click", (e) => {
       if (!e.target.classList.contains("tab-btn")) return;
 
